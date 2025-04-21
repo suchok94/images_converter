@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import os, sys
+import os
 from PIL import Image
 
 class AImageConverter(ABC):
@@ -11,21 +11,21 @@ class AImageConverter(ABC):
 class ImageConverterJpgToPng(AImageConverter):
     
     def convert(source_path, destination_path):
-        file = os.path.splitext(source_path)
-        outfile = str(destination_path) + str(file) + '.png'
+        file, e = os.path.splitext(source_path)
+        outfile = os.path.join(destination_path, file) + '.png'
         try:
             with Image.open(source_path) as im:
                   im.save(outfile)
         except OSError:
-            print("cannot convert", file)
+            print("Не получилось сконвертировать", file, 'в png')
 
 class ImageConverterPngToJpg(AImageConverter):
         
     def convert(source_path, destination_path):
-        file = os.path.splitext(source_path)
-        outfile = str(destination_path) + str(file) + '.jpg'
+        file, e = os.path.splitext(source_path)
+        outfile = os.path.join(destination_path, file) + '.jpg'
         try:
             with Image.open(source_path) as im:
                   im.save(outfile)
         except OSError:
-            print("cannot convert", file)
+            print("Не получилось сконвертировать", file, 'в jpg')
