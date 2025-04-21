@@ -15,7 +15,7 @@ def main():
         app = App(ConverterCreatorJpgToPng())
         app.convert(source_path, destination_path)
     
-    else: print("Не правильный путь")
+    else: print("Неправильный формат")
 
 
 if __name__ == '__main__':
