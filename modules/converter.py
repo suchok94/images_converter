@@ -2,28 +2,28 @@ from abc import ABC, abstractmethod
 import os, sys
 from PIL import Image
 
-class ImageConverter(ABC):
+class AImageConverter(ABC):
 
     @abstractmethod
     def convert(source_path, destination_path):
         pass
 
-class ImageConverterJpgToPng(ImageConverter):
+class ImageConverterJpgToPng(AImageConverter):
     
     def convert(source_path, destination_path):
         file = os.path.splitext(source_path)
-        outfile = destination_path + file + '.png'
+        outfile = str(destination_path) + str(file) + '.png'
         try:
             with Image.open(source_path) as im:
                   im.save(outfile)
         except OSError:
             print("cannot convert", file)
 
-class ImageConverterPngToJpg(ImageConverter):
+class ImageConverterPngToJpg(AImageConverter):
         
     def convert(source_path, destination_path):
         file = os.path.splitext(source_path)
-        outfile = destination_path + file + '.jpg'
+        outfile = str(destination_path) + str(file) + '.jpg'
         try:
             with Image.open(source_path) as im:
                   im.save(outfile)
