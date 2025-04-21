@@ -25,5 +25,5 @@ class ConverterCreatorPngToJpg(AConverterCreator):
         pass
 
     def create_converter(self, source_path, destination_path):
-        return ImageConverterJpgToPng.convert(source_path, destination_path)
+        return ImageConverterPngToJpg.convert(source_path, destination_path)
 
